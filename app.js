@@ -1,22 +1,26 @@
 // variables
 let listaDeAmigos = [];
-let nuevoli = "";
-const ul = document.getElementById("listaAmigos");
-
+let lista = document.getElementById('listaAmigos');
 
 //funciones
 function agregarAmigo (){
-    let amigo = document.getElementById("amigo").value;
-    //verificacion en consola
-    console.log("tipeo:" + amigo);
-    if (amigo == ""){
+    let nombre = document.getElementById("amigo").value;
+    if (nombre === ""){
         alert("Porfavor inserte un nombre");
     }else {
-        listaDeAmigos.push(amigo);
+        actualizarLista(nombre);
     }
     document.getElementById("amigo").value="";
-    console.log(listaDeAmigos);
 }
-
+function actualizarLista(nombre){
+    if(listaDeAmigos.includes(nombre)){
+        alert("Ese amigo ya esta en la lista");
+    }else{
+        let nuevoNombre = document.createElement("li");
+        nuevoNombre.textContent = nombre
+        lista.appendChild(nuevoNombre);
+        listaDeAmigos.push(nombre);
+    }
+}
 
 
